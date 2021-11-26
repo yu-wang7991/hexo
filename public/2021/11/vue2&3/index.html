@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+  <meta name="description" content="分享Web开发中的技术文章，分享生活中的灵感与创意。">
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="VUE 2 &amp; 3"/>
+  
+  <!--Open Graph Description-->
+  
+      <meta property="og:description" content="分享Web开发中的技术文章，分享生活中的灵感与创意。" />
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="博客"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>VUE 2 &amp; 3 - 博客</title>
+
+
+  <link rel="shortcut icon" href="https://cdn.pixabay.com/photo/2021/08/26/10/51/cliff-6575844_1280.jpg">
+
+  <!-- Custom CSS/Sass -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="https://cdn.pixabay.com/photo/2021/08/26/10/51/cliff-6575844_1280.jpg" alt="博客" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  家
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  归档
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about">
+                
+                  关于
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            VUE 2 & 3
+            
+          </h1>
+          <p class="posted-on">
+          2021-11-10
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/javascript/" rel="tag">
+                  javascript
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <p>vue 复习</p>
+<a id="more"></a>
+
+<h5 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h5><p>VUE 参考了 mvvm 架构模型，m（模型 model）data 中的数据，v（视图 view）模版，vm（视图模型 viewmodel）vue 实例对象</p>
+<p>但是 vue 中添加了一个属性。ref<br>通过 ref 可以拿到 dom 对象，通过 ref 直接去操作视图。这一点上，违背了 mvvm</p>
+<h5 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h5><p><img src="../img/Snipaste_2021-11-16_23-33-59.png"></p>
+<p>这部分只做了数据代理，没有做数据劫持，也就是数据改变视图改变（响应式），其实_data 里面的属性 vue 有做数据劫持。</p>
+<p>Vue2.x 是使用 Object.defindProperty()，来进行对对象的监听的，但是改变数组里的某个值不会触发 set，(如果要监听的到话，需要重新编写数组的方法)， 必须遍历每个对象的每个属性，如果对象嵌套很深的话，需要使用递归调用。</p>
+<h5 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h5><p>1.prevent:阻止默认事件（常用）</p>
+<p>2.stop：阻止时间冒泡（常用）</p>
+<p>3.once：事件只触发一次（常用）</p>
+<p>4.capture:使用事件的捕获模式</p>
+<p>5.self：只有 event.target 是当前操作元素才会触发事件</p>
+<p>6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕。（@scroll 滚动条事件用不到，@wheel 滚轮事件用到一般 c 端会用到）</p>
+<p>Tips：可以使用链式写法@click.prevent.stop</p>
+<h5 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h5><p>@keyup.enter=””</p>
+<p>1.vue 常用的按键别名</p>
+<p>回车 enter</p>
+<p>删除 delete （退格和删除都能触发）</p>
+<p>退出 esc</p>
+<p>空格 space</p>
+<p>2.vue 为提供的按键，可以使用案件原始的 key 值去绑定，但注意转为短横线命名。</p>
+<p>3.系统修饰键用法比较特殊 最好配合 keydown 使用</p>
+<p>4.vue.config.keyCode.自定义键名 = 键码</p>
+<p>Tips：可以使用链式写法@keyup.enter.y=””意思是 enter 和 y 都要按才能触发</p>
+<h5 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">完整写法</span><br><span class="line">computed:&#123;</span><br><span class="line">	fullName:&#123;</span><br><span class="line">		<span class="keyword">get</span>()&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.nameA+<span class="string">'-'</span><span class="keyword">this</span>.nameB</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">set</span>(value)&#123;</span><br><span class="line">		<span class="keyword">const</span> arr = value.split(<span class="string">'-'</span>)</span><br><span class="line">		<span class="keyword">this</span>.nameA = arr[<span class="number">0</span>]</span><br><span class="line">		<span class="keyword">this</span>.nameB = arr[<span class="number">1</span>]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">简写（只用到<span class="keyword">get</span>，用不到<span class="keyword">set</span>的时候使用）</span><br><span class="line">computed:&#123;</span><br><span class="line">	fullName()&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.nameA+<span class="string">'-'</span><span class="keyword">this</span>.nameB</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="监视属性"><a href="#监视属性" class="headerlink" title="监视属性"></a>监视属性</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;</span><br><span class="line">	id:<span class="number">2</span>,</span><br><span class="line">	numbers:&#123;</span><br><span class="line">		a:<span class="number">1</span>,</span><br><span class="line">		b:<span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">watch:&#123;</span><br><span class="line">	id:&#123;</span><br><span class="line">		handler()&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">'a改变了'</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;，</span><br><span class="line">	<span class="comment">//如果要监视多级结构中某个属性的变化可以这样写</span></span><br><span class="line">	<span class="string">'numbers.a'</span>:&#123;</span><br><span class="line">  	handler(<span class="keyword">new</span>,old)&#123;</span><br><span class="line">  			<span class="built_in">console</span>.log(<span class="string">'a改变了'</span>)</span><br><span class="line">  	&#125;</span><br><span class="line">	&#125;，</span><br><span class="line">	<span class="comment">//监视多级结构所有属性的变化</span></span><br><span class="line">	numbers:&#123;</span><br><span class="line">		immediate:<span class="literal">true</span>,<span class="comment">//初始化时让handler执行一次</span></span><br><span class="line">		deep:<span class="literal">true</span>,<span class="comment">//深度监视</span></span><br><span class="line">		handler(<span class="keyword">new</span>,old)&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'numbers改变了'</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//简写（用不到deep，和immediate时使用）</span></span><br><span class="line">watch:&#123;</span><br><span class="line">	id(<span class="keyword">new</span>,old)&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'id改变了'</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Tips：</span><br><span class="line">vm.$watch(<span class="string">'id'</span>,&#123;</span><br><span class="line">		immediate:<span class="literal">true</span>,<span class="comment">//初始化时让handler执行一次</span></span><br><span class="line">		deep:<span class="literal">true</span>,<span class="comment">//深度监视</span></span><br><span class="line">		handler(n,o)&#123;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.$watch(<span class="string">'id'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">n,o</span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'id改变了'</span>，n,o)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="计算属性和监听属性的区别"><a href="#计算属性和监听属性的区别" class="headerlink" title="计算属性和监听属性的区别"></a>计算属性和监听属性的区别</h5><p>computed 能完成的，watch 都能完成，watch 可以执行异步任务，computed 不行，computed 只有原始值发生变化，才会触发，具有缓存，watch 是数据改变就会触发。</p>
+<p>Tips：所有被 vue 管理的函数嘴还写成普通函数，所有不被 vue 管理的函数最好写成箭头函数，这样 this 才是指向 vm 或组件实例对象。</p>
+<h5 id="vue-set"><a href="#vue-set" class="headerlink" title="vue.set()"></a>vue.set()</h5><h5 id="数据劫持"><a href="#数据劫持" class="headerlink" title="数据劫持"></a>数据劫持</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正常初始化data后，模版解析渲染页面，这个时候是响应式的，但是后面又想给data对象中追加数据，这个时候vue不做响应式，就像vue的bug。</span></span><br><span class="line">如果要给对象加属性，而且要响应式，要用</span><br><span class="line"><span class="number">1.</span>vue.set(target,propertyName/index,value)或vm.$<span class="keyword">set</span>(target,propertyName/index,value)</span><br><span class="line">2.但是vue.<span class="keyword">set</span>和vm.$<span class="keyword">set</span>不能给vm或vm根数据对象添加对象（Tips:不能给data直接添加属性 要再加一层结构）</span><br><span class="line">如果要修改数组中的某个元素一定要用如下方法不然不能响应式，可以使用这些vue包裹过的API push() shift() unshift() splice() sort() reverse()或者vm.$<span class="keyword">set</span>() vue.<span class="keyword">set</span>()</span><br></pre></td></tr></table></figure>
+
+<h5 id="Es6"><a href="#Es6" class="headerlink" title="Es6"></a>Es6</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//形参默认值</span></span><br><span class="line">test(a=<span class="string">"1"</span>)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(a)</span><br><span class="line">&#125;</span><br><span class="line">test（）<span class="comment">//1</span></span><br><span class="line">test（<span class="number">2</span>）<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="管道符"><a href="#管道符" class="headerlink" title="管道符"></a>管道符</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//和methods 同一层级的配置项</span></span><br><span class="line">常用在插值表达式中&#123;&#123;a | c&#125;&#125;</span><br><span class="line">methods:&#123;</span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line">filter:&#123;</span><br><span class="line">	c(value)&#123;</span><br><span class="line">	<span class="comment">//value 会收到a</span></span><br><span class="line">	<span class="keyword">return</span> a + <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="V-html"><a href="#V-html" class="headerlink" title="V-html"></a>V-html</h5><p>向指定节点渲染包换 html 结构的内容</p>
+<p>v-html 可以识别 html 结构</p>
+<p>v-html 有安全性问题 不要在用户提交的内容上使用 容易导致 xxs 攻击</p>
+<h5 id="v-clock"><a href="#v-clock" class="headerlink" title="v-clock"></a>v-clock</h5><p>直接写在标签里 <div v-clock/></p>
+<p>使用 css 属性属性选择器[v-clock]{}可以解决因为网速满页面出现情况</p>
+<p>当脚本跑起来时 vue 会删掉 v-clock 属性</p>
+<h5 id="V-once"><a href="#V-once" class="headerlink" title="V-once"></a>V-once</h5><p>只在初始化时解析一次 后面就视为静态内容 <div v-once/></p>
+<h5 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>v-自定义指令名</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>写在配置项directives：&#123;</span><br><span class="line"></span><br><span class="line">自定义指令名（element，binding）&#123;</span><br><span class="line"></span><br><span class="line">		element.innerText = binding.value * <span class="number">10</span></span><br><span class="line"></span><br><span class="line"> 	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如果需要处理一些逻辑时自定义指令写成对象形式</span></span><br><span class="line">fbind:&#123;</span><br><span class="line">  <span class="comment">//一上来调用，指令绑定时</span></span><br><span class="line">  bind(e,b)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//指令所在的元素被插入页面时</span></span><br><span class="line">  inserted(e,d)&#123;</span><br><span class="line">    <span class="comment">//比如input获取焦点需要写在这里</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//指令所在的模版被重新解析时</span></span><br><span class="line">   update(e,b)&#123;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>初始化时调用一次，指令所在的模版被重新解析式调用。</span><br></pre></td></tr></table></figure>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">留言</h1> -->
+
+  
+  <div id="disqus_thread">
+    <script type="text/javascript">
+    var disqus_config = function () {
+          this.page.url = window.location.href;
+          this.page.identifier = 'post-vue2&amp;3';
+          this.page.title = 'VUE 2 &amp; 3';
+      };
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+        <div class="nav-previous">
+          <a href="/2021/11/js方法等/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一页</a>
+        </div>
+      
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">关于本站</h1>
+        <div class="custom-widget-content">
+          
+          <p align="left">分享Web开发中的技术文章，分享生活中的灵感与创意，鼓励阅读，不读书则愚。</p>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">与我联系</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/yu-wang7991" class="icon icon-github" target="_blank">github</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">站内搜索</h1>
+        <div class="widget-text">
+          <form onSubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>博客 &copy; 2021</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+
+<script src="/js/app.js"></script>
+
+
+<script>
+  var disqus_shortname = 'hinpc';
+
+  
+  var disqus_url = 'http://yu-wang7991.github.io/2021/11/vue2&amp;3/';
+  
+
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<!-- baidu_analytics start -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?329f0d1bce0a1973b19c15ff3c8c3bc8";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- baidu_analytics end -->
+
+
+
+
+</body>
+
+</html>
