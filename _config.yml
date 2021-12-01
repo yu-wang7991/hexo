@@ -78,7 +78,7 @@ logo: https://cdn.pixabay.com/photo/2021/08/26/10/51/cliff-6575844_1280.jpg
 nav:
   家: .
   归档: archives
-  关于: about
+  # 关于: about
 
 social:
   github: https://github.com/yu-wang7991
