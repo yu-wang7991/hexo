@@ -1,4 +1,4 @@
-title: JavaScript 中常用的方法等
+title: JavaScript 常用方法
 date: 2021-4-20 14.37  
 modified: 2021-4-20 14.37
 tag:
