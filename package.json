@@ -23,6 +23,6 @@
     "hexo-renderer-sass": "^0.4.0",
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0",
-    "node-sass": "^7.0.1"
+    "node-sass": "^8.0.0"
   }
 }
