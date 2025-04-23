@@ -7,7 +7,7 @@ tag:
 
 photos:
 
-- https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8b3V0ZG9vcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60
+- /images/3.jpg
 
 ---
 
