@@ -15,3 +15,6 @@ hexo generate # 生成新的静态文件
 
 # 部署到 GitHub
 hexo deploy
+
+
+hexo clean && hexo g && hexo d
